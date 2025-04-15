@@ -1,0 +1,61 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1e1e1e;
+    color:#fff;
+    overflow: hidden;
+}
+
+.slot-machine-container{
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.slot-machine{
+    display:flex;
+    gap:20px;
+    padding:20px;
+    background: #efefef;
+    border:5px solid #555;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+}
+
+.reel{
+    max-width: 150px;
+    min-width: 100px;
+    max-height: 150px;
+    min-height: 100px;
+    overflow: hidden;
+    display:flex;
+    justify-content: center;
+    position: relative;
+}
+
+.reel img{
+    width:100px;
+    height: 100px;
+    position: absolute;
+    transition: transform 0.3s ease;
+}
+
+#handle{
+    margin-top: 20px;
+    padding: 12px 25px;
+    font-size: 1.2em;
+    cursor: pointer;
+    background-color: #ff4747;
+    color:#fff;
+    border:none;
+    border-radius: 10px;
+}
