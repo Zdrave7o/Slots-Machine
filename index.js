@@ -12,17 +12,6 @@ let confettiInterval;
 
 //initialize reels to show only one image at the start
 function initializeReels(){
-    //changing the reels images
-    let intervalTime = 1;
-    const countDown = setInterval(() =>{
-        intervalTime--;
-
-        if(intervalTime <= 0){
-            clearInterval(countDown);
-            initializeReels();
-        }
-    }, 1000);
-
     //displaying the reels
     let randomNum = Math.floor(Math.random()*images.length);
     reels.forEach(reel => {
@@ -50,5 +39,59 @@ function spinReel(reel, duration){
         }, interval)
     })
 }
+//function to create and display continous confetti
+function startConfetti(){
+    confettiInterval = setInterval(() =>{
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        confetti.style.left = `${Math.random() * 100}vw`;
+        confetti.style.backgroundColor = `hsl(${Math.random() * 
+        360}, 100%; 50%;)`;
+
+        document.body.appendChild(confetti);
+
+        //remove confetti after if falls
+        setTimeout(() => {
+            confetti.remove();
+        }, 1500);
+    }, 200);
+}
+//function to stop confetti animation
+function stopConfetti(){
+    clearInterval(confettiInterval);
+}
+
+//main function to start the game
+async function startGame(){
+    message.textContent = "";
+
+    //reset any previous effects
+    slotMachine.classList.remove("loss", "win");
+    stopConfetti();
+
+    initializeReels();
+
+    const results = await Promise.all([
+        spinReel(reels[0], 2000),
+        spinReel(reels[1], 3000),
+        spinReel(reels[2], 4000),
+
+    ]);
+
+    handleButton.disabled = false;
+
+    //check if all results are the same
+    if(results[0] === results[1] && results[1] === results[2]) {
+        message.textContent = "YOU WIN !"
+        slotMachine.classList.add("win");
+
+        startConfetti();
+    } else{
+        message.textContent = "Try Again"
+        slotMachine.classList.add("loss");
+    }
+}
 //initializing the reels on page load
 initializeReels();
+
+handleButton.addEventListener('click', startGame);
