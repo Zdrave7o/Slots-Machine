@@ -1,23 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slots machine</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="slot-machine-container">
-        <div class="slot-machine">
-            <div class="reel" id="reel1"></div>
-            <div class="reel" id="reel2"></div>
-            <div class="reel" id="reel3"></div>
-        </div>
 
-        <button id="handle">Press To Start</button>
-        <div id="message"></div>
-    </div>
+<body>
+    <main class="main" id="mainPageSection">
+        <h1 class="welcomeText">Welcome To The Slot Machine!</h1>
+        <label for="creditInput">Enter Available credits:</label>
+        <input id="creditInput" type="number" min="100">
+        <button id="submitCredits">Enter</button>
+    </main>
+
+    <main class="main" id="slot-machine-display">
+        <div class="slot-machine-container">
+            <div class="slot-machine">
+                <div class="reel" id="reel1"></div>
+                <div class="reel" id="reel2"></div>
+                <div class="reel" id="reel3"></div>
+            </div>
+            <h3 id="availableCredits"></h3>
+            <input id="bet" type="number" min="1" placeholder="BET:">
+            <button id="handle">Press To Start</button>
+            <div id="message"></div>
+        </div>
+    </main>
 
     <script src="index.js"></script>
 </body>
+
 </html>
