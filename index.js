@@ -97,6 +97,8 @@ async function startGame(){
         window.prompt("You cannot bet less than 1 credit!");
     } 
     else {
+        disableButton();
+        
         message.textContent = "";
 
         //reset any previous effects
@@ -150,5 +152,4 @@ function disableButton(){
 
 handleButton.addEventListener("click", () => {
   startGame();
-  disableButton();
 });
