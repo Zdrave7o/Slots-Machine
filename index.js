@@ -138,4 +138,17 @@ async function startGame(){
 }
 //initializing the reels on page load
 
-handleButton.addEventListener('click', startGame);
+function disableButton(){
+    let interval = 4000;
+    handleButton.disabled = true;
+
+    setTimeout(() => {
+        handleButton.disabled = false
+        }, interval);
+
+}
+
+handleButton.addEventListener("click", () => {
+  startGame();
+  disableButton();
+});
