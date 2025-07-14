@@ -82,7 +82,7 @@ function startConfetti(){
         }, 1500);
     }, 200);
 }
-//function to stop confetti animation
+//function to stop confetti animations
 function stopConfetti(){
     clearInterval(confettiInterval);
 }
